@@ -103,6 +103,16 @@ jobs:
           token: ${{ github.event.client_payload.token }}
           path: 'source-code'
 
+      # TODO: Temporary code to be removed later
+      - name: Clear stale Veracode config & env (Linux/macOS)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          rm -rf ~/.veracode
+          echo "Active Runner: $RUNNER_NAME"
+          echo "Active URL: $FIX_SAST_BACKEND_URL"
+          echo "Payload Params: ${{ github.event.client_payload.fix_sast_params }}"
+
       - id: run-fix-sast
         uses: veracode/veracode-fix-for-sca@feature/sast-workflow
         env:
