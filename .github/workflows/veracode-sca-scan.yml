@@ -66,7 +66,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           path: 'veracode-helper'
-
+          lfs: true
       - name: Run Pre-Build Dependency - Linux
         if: contains(runner.os, 'Linux')
         shell: bash
@@ -189,6 +189,7 @@ jobs:
         with:
           path: 'veracode-helper'
           fetch-depth: 0
+          lfs: true
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             helper/cli/*
