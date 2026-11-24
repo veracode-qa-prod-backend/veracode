@@ -102,3 +102,12 @@ veracode_iac_secrets_scan:
     trigger: false
     commands:
       - "Veracode IAC Scan"
+
+# Docker image used for the packaging/build container (needs root for apt-get).
+actions:
+  veracode_static_scan:
+    build:
+      packager_image: veracode/scm-packaging:5.0.0
+  veracode_sca_scan:
+    build:
+      packager_image: veracode/scm-packaging:5.0.0
